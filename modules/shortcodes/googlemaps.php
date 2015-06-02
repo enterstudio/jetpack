@@ -105,7 +105,13 @@ function jetpack_googlemaps_shortcode( $atts ) {
 			}
 		}
 
-		return '<div class="' . esc_attr( $css_class ) . '"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . $url . '"></iframe></div>';
+		// Adding support for CSS classing the iframe containing the map.
+		$mapclass = '';
+		if ( ! empty( $atts['class'] ) ) {
+			$mapclass = ' class="' . $atts['class'] . '"';
+		}
+	
+		return '<div class="' . esc_attr( $css_class ) . '"><iframe width="' . $width . '" height="' . $height . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . $url . '"'. $mapclass . '></iframe></div>';
 	}
 }
 add_shortcode( 'googlemaps', 'jetpack_googlemaps_shortcode' );
