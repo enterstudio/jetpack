@@ -10,9 +10,9 @@
  */
 
 class Jetpack_Portfolio {
-	const CUSTOM_POST_TYPE       = 'jetpack-portfolio';
-	const CUSTOM_TAXONOMY_TYPE   = 'jetpack-portfolio-type';
-	const CUSTOM_TAXONOMY_TAG    = 'jetpack-portfolio-tag';
+	const CUSTOM_POST_TYPE       = 'page'; //'jetpack-portfolio';
+	const CUSTOM_TAXONOMY_TYPE   = 'category'; //'jetpack-portfolio-type';
+	const CUSTOM_TAXONOMY_TAG    = 'post_tag';  //'jetpack-portfolio-tag';
 	const OPTION_NAME            = 'jetpack_portfolio';
 	const OPTION_READING_SETTING = 'jetpack_portfolio_posts_per_page';
 
