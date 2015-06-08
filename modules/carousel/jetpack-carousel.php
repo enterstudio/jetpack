@@ -227,6 +227,8 @@ class Jetpack_Carousel {
 		$attachment_title = wptexturize( $attachment->post_title );
 		$attachment_desc  = wpautop( wptexturize( $attachment->post_content ) );
 
+		/* --> yuma -- We need geo-data, so don't strip it out...
+
 		// Not yet providing geo-data, need to "fuzzify" for privacy
 		if ( ! empty( $img_meta ) ) {
 			foreach ( $img_meta as $k => $v ) {
@@ -234,6 +236,8 @@ class Jetpack_Carousel {
 					unset( $img_meta[$k] );
 			}
 		}
+
+		yuma <-- */
 
 		$img_meta = json_encode( array_map( 'strval', $img_meta ) );
 
@@ -444,8 +448,8 @@ class Jetpack_Carousel {
 		register_setting( 'media', 'carousel_display_exif', array( $this, 'carousel_display_exif_sanitize' ) );
 
 		// No geo setting yet, need to "fuzzify" data first, for privacy
-		// add_settings_field('carousel_display_geo', __( 'Geolocation', 'jetpack' ), array( $this, 'carousel_display_geo_callback' ), 'media', 'carousel_section' );
-		// register_setting( 'media', 'carousel_display_geo', array( $this, 'carousel_display_geo_sanitize' ) );
+		add_settings_field('carousel_display_geo', __( 'Geolocation', 'jetpack' ), array( $this, 'carousel_display_geo_callback' ), 'media', 'carousel_section' );
+		register_setting( 'media', 'carousel_display_geo', array( $this, 'carousel_display_geo_sanitize' ) );
 	}
 
 	// Fulfill the settings section callback requirement by returning nothing
