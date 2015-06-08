@@ -18,12 +18,17 @@ abstract class Jetpack_Tiled_Gallery_Item {
 	public function fuzzy_image_meta() {
 		$meta = wp_get_attachment_metadata( $this->image->ID );
 		$img_meta = ( ! empty( $meta['image_meta'] ) ) ? (array) $meta['image_meta'] : array();
+
+		/* --> yuma -- We want latitude and longitude, so don't strip it out
+
 		if ( ! empty( $img_meta ) ) {
 			foreach ( $img_meta as $k => $v ) {
 				if ( 'latitude' == $k || 'longitude' == $k )
 					unset( $img_meta[$k] );
 			}
 		}
+
+		yuma <-- */
 
 		return $img_meta;
 	}
